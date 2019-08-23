@@ -1,0 +1,70 @@
+﻿@model List<DataAccessLayer.Entities.OrganizationUser>
+
+@{
+    var userliste = (List<DataAccessLayer.Entities.User>)ViewData["Userlar"];
+    int org_Id = (int)ViewData["org_Id"];       
+}
+
+
+
+<br />
+<form action="/Home/UserOrg_userAdd" method="post">
+    <div>
+        <input type="hidden" name="org_Id" value="@org_Id" id="org_Id" />
+        <select class="form-control" id="user_Id" name="user_Id">
+
+            @foreach (var item in userliste)
+            {
+                <option id="@item.Id" value="@item.Id">@item.UserName</option>
+            }
+
+        </select>
+    </div>
+    <br />
+    <div>
+        <input type="button" name="Gönder" value="Gönder" onclick="AjaxType()" />
+    </div>
+
+
+</form>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>UserName</th>
+            <th>Age</th>
+            <th>Organizasyon Adı</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.Users.UserName</td>
+                <td>@item.Users.Age</td>
+                <td>@item.Organizations.Name</td>
+            </tr>
+
+        }
+    </tbody>
+
+</table>
+<script>
+    function AjaxType() {
+        $.post(
+            "UserOrg_userAdd",
+            {
+                org_Id: $('#org_Id').val(),
+                user_Id: $('#user_Id').val()
+            },
+            function () {
+                alert("İşlem tamamlandı.");
+                $('#as24').load("/Home/OrgUserPartial/?id=@org_Id");
+            }
+        )
+
+    }
+
+</script>

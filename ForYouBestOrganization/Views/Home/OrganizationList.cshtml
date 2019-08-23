@@ -1,0 +1,68 @@
+﻿@model IEnumerable<DataAccessLayer.Entities.Organization>
+
+@{
+    ViewBag.Title = "OrganizationList";
+}
+
+<h2>OrganizationList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organizer.UserName)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="~/Images/@item.ImageUrl" class="img-rounded" alt="@item.ImageUrl" width="50" height="50" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrgDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Organizer.UserName)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "OrganizationEdit", "Home", new { id = item.Id }, null) |
+            @Html.ActionLink("Details", "OrganizationDetail", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "OrganizationDelete", new { id = item.Id })
+        </td>
+
+        
+</tr>
+}
+
+</table>

@@ -1,0 +1,108 @@
+﻿@model List<DataAccessLayer.Entities.Organization>
+
+@{
+    DataAccessLayer.Entities.Organization b1 = new DataAccessLayer.Entities.Organization();
+    DataAccessLayer.Entities.Organization b2 = new DataAccessLayer.Entities.Organization();
+    DataAccessLayer.Entities.Organization b3 = new DataAccessLayer.Entities.Organization();
+    DataAccessLayer.Entities.Organization b4 = new DataAccessLayer.Entities.Organization();
+    DataAccessLayer.Entities.Organization b5 = new DataAccessLayer.Entities.Organization();
+    DataAccessLayer.Entities.Organization b6 = new DataAccessLayer.Entities.Organization();
+
+    if (Model.Count() > 5)
+    {
+        b6 = Model[5];
+    }
+    if (Model.Count() > 4)
+    {
+        b5 = Model[4];
+    }
+    if (Model.Count() > 3)
+    {
+        b4 = Model[3];
+    }
+    if (Model.Count() > 2)
+    {
+        b3 = Model[2];
+    }
+    if (Model.Count() > 1)
+    {
+        b2 = Model[1];
+    }
+    if (Model.Count() > 0)
+    {
+        b1 = Model[0];
+    }
+
+
+}
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">@b1.Name</div>
+                <div class="panel-body">
+                    <a href="/Home/OrganizationDetail?id=@b1.Id">
+                        <img src="~/Images/@b1.ImageUrl" class="img-responsive" style="width:100%" alt="@b1.ImageUrl">
+                    </a>
+                </div>
+
+                <div class="panel-footer">@b1.OrgDate.ToString("dddd, dd MMMM yyyy")</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">BLACK FRIDAY DEAL</div>
+                <a href="/Home/OrganizationDetail?id=@b2.Id">
+                    <div class="panel-body"><img src="~/Images/@b2.ImageUrl" class="img-responsive" style="width:100%" alt="@b2.ImageUrl"></div>
+                </a>
+                <div class="panel-footer">@b2.OrgDate.ToString("dddd, dd MMMM yyyy")</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">BLACK FRIDAY DEAL</div>
+                <a href="/Home/OrganizationDetail?id=@b3.Id">
+                    <div class="panel-body"><img src="~/Images/@b3.ImageUrl" class="img-responsive" style="width:100%" alt="@b3.ImageUrl"></div>
+                </a>
+                <div class="panel-footer">@b3.OrgDate.ToString("dddd, dd MMMM yyyy")</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.Count() > 4)
+{
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">BLACK FRIDAY DEAL</div>
+                    <a href="/Home/OrganizationDetail?id=@b4.Id">
+                        <div class="panel-body"><img src="~/Images/@b4.ImageUrl" class="img-responsive" style="width:100%" alt="@b4.ImageUrl"></div>
+                    </a>
+                    <div class="panel-footer">@b4.OrgDate.ToString("dddd, dd MMMM yyyy")</div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">BLACK FRIDAY DEAL</div>
+                    <a href="/Home/OrganizationDetail?id=@b5.Id">
+                        <div class="panel-body"><img src="~/Images/@b5.ImageUrl" class="img-responsive" style="width:100%" alt="@b5.ImageUrl"></div>
+                    </a>
+                    <div class="panel-footer">@b5.OrgDate.ToString("dddd, dd MMMM yyyy")</div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">BLACK FRIDAY DEAL</div>
+                    <a href="/Home/OrganizationDetail?id=@b6.Id">
+                        <div class="panel-body"><img src="~/Images/@b6.ImageUrl" class="img-responsive" style="width:100%" alt="@b6.ImageUrl"></div>
+                    </a>
+                    <div class="panel-footer">@b6.OrgDate.ToString("dddd, dd MMMM yyyy")</div>
+                </div>
+            </div>
+        </div>
+    </div><br><br>
+}
